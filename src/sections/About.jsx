@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Card from "../components/Card";
 import { Globe } from "../components/globe";
 import CopyEmailButton from "../components/CopyEmailButton";
-import { Frameworks } from "../components/FrameWorks";
+import { Frameworks } from "../components/Frameworks";
 
 const About = () => {
   const grid2Container = useRef();
@@ -36,6 +36,11 @@ const About = () => {
               CODE IS CRAFT
             </p>
             <Card
+              style={{ rotate: "-45deg", top: "5%", left: "10%" }}
+              image="assets/logos/Kaggle.svg"
+              containerRef={grid2Container}
+            />
+            <Card
               style={{ rotate: "75deg", top: "30%", left: "20%" }}
               text="GRASP"
               containerRef={grid2Container}
@@ -57,22 +62,33 @@ const About = () => {
             />
             <Card
               style={{ rotate: "20deg", top: "10%", left: "38%" }}
-              text="SRP"
+              text="YAGNI"
+              containerRef={grid2Container}
+            />
+            <Card
+              style={{ rotate: "20deg", top: "10%", left: "38%" }}
+              text="DRY"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "30deg", top: "70%", left: "70%" }}
-              image="assets/logos/csharp-pink.png"
+              image="assets/logos/sql.svg"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-              image="assets/logos/dotnet-pink.png"
+              image="assets/logos/Figma.svg"
+              containerRef={grid2Container}
+            />
+            
+            <Card
+              style={{ rotate: "-45deg", top: "45%", left: "30%" }}
+              image="assets/logos/openai.svg"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "-45deg", top: "5%", left: "10%" }}
-              image="assets/logos/blazor-pink.png"
+              style={{ rotate: "-45deg", top: "15%", left: "80%" }}
+              image="assets/logos/GitHub.svg"
               containerRef={grid2Container}
             />
           </div>
@@ -82,7 +98,7 @@ const About = () => {
           <div className="z-10 w-[50%]">
             <p className="headtext">Time Zone</p>
             <p className="subtext">
-              I'm based in Mars, and open to remote work worldwide
+              I'm based in Mars, and open to remote work worldwide...
             </p>
           </div>
           <figure className="absolute left-[30%] top-[10%]">

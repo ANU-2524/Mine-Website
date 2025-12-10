@@ -1,4 +1,5 @@
-// import { mySocials } from "../constants";
+import { mySocials } from "../constant";
+
 const Footer = () => {
   return (
     <section className="flex flex-wrap items-center justify-between gap-5 pb-3 text-sm text-neutral-400 c-space">
@@ -8,13 +9,13 @@ const Footer = () => {
         <p>|</p>
         <p>Privacy Policy</p>
       </div>
-      {/* <div className="flex gap-3">
+      <div className="flex gap-3 white-500">
         {mySocials.map((social, index) => (
           <a href={social.href} key={index}>
             <img src={social.icon} className="w-5 h-5" alt={social.name} />
           </a>
         ))}
-      </div> */}
+      </div>
       <p>© 2025 Ali. All rights reserved.</p>
     </section>
   );

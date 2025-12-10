@@ -1,4 +1,28 @@
 export const myProjects = [
+    {
+    id: 8,
+    title: "AI Worlflow Assistant",
+    description:
+      "A real-time collaboration suite with messaging, task boards, and team workflows.",
+    subDescription: [
+      "Implemented real-time chat using Socket.IO.",
+      "Built kanban-based task management system.",
+      "Enabled file sharing and multi-device support.",
+      "Designed an efficient workspace UI."
+    ],
+    href: "https://github.com/ANU-2524/ai-workflow-assistant",
+    logo: "",
+    image: "/assets/projects/ai.png",
+    tags: [
+      { id: 1, name: "Kafka", path: "/assets/logos/kafka.svg" },
+      { id: 2, name: "Socket.IO", path: "/assets/logos/socket.svg" },
+      { id: 3, name: "Real-time", path: "/assets/logos/read.svg" } , 
+      { id: 4, name: "Docker", path: "/assets/logos/docker.svg" } , 
+      { id: 4, name: "Kafka", path: "/assets/logos/kafka.svg" } , 
+      { id: 4, name: "Django", path: "/assets/logos/Django.svg" } , 
+      { id: 5, name: "Web App", path: "/assets/logos/web.png" } ,
+    ]
+  } , 
   {
     id: 1,
     title: "JustCoding",
@@ -14,10 +38,10 @@ export const myProjects = [
     logo: "",
     image: "/assets/projects/justCode.png",
     tags: [
-      { id: 1, name: "React", path: "/assets/logos/react.svg" },
-      { id: 2, name: "JavaScript", path: "/assets/logos/javascript.svg" },
-      { id: 3, name: "TailwindCSS", path: "/assets/logos/tailwindcss.svg" },
-      { id: 4, name: "Web App", path: "/assets/logos/web.svg" }
+      { id: 1, name: "Vite", path: "/assets/logos/Vite.js.svg" } ,
+      { id: 2, name: "JavaScript", path: "/assets/logos/JavaScript.svg" },
+      { id: 3, name: "TailwindCSS", path: "/assets/logos/TailwindCSS.svg" },
+      { id: 4, name: "Web App", path: "/assets/logos/web.png" } , 
     ]
   },
 
@@ -36,10 +60,10 @@ export const myProjects = [
     logo: "",
     image: "/assets/projects/sss.png",
     tags: [
-      { id: 1, name: "React", path: "/assets/logos/react.svg" },
-      { id: 2, name: "Firebase", path: "/assets/logos/firebase.svg" },
+      { id: 1, name: "React", path: "/assets/logos/React.svg" },
+      { id: 2, name: "Firebase", path: "/assets/logos/Firebase.svg" },
       { id: 3, name: "Real-time", path: "/assets/logos/socket.svg" },
-      { id: 4, name: "TailwindCSS", path: "/assets/logos/tailwindcss.svg" }
+      { id: 4, name: "TailwindCSS", path: "/assets/logos/TailwindCSS.svg" }
     ]
   },
 
@@ -94,7 +118,6 @@ export const myProjects = [
       "Used Python APIs to fetch real-time weather data.",
       "Built clean and lightweight interface.",
       "Added location-based weather retrieval.",
-      "Hosted backend on Render for global access."
     ],
     href: "https://weather-app-pythonproject-n5c3.onrender.com/",
     logo: "",
@@ -121,9 +144,9 @@ export const myProjects = [
     logo: "",
     image: "/assets/projects/collabNerds.png",
     tags: [
-      { id: 1, name: "React", path: "/assets/logos/react.svg" },
+      { id: 1, name: "React", path: "/assets/logos/React.svg" },
       { id: 2, name: "Socket.IO", path: "/assets/logos/socket.svg" },
-      { id: 3, name: "Real-time", path: "/assets/logos/realtime.svg" }
+      { id: 3, name: "Real-time", path: "/assets/logos/web.png" }
     ]
   }
   , 
@@ -131,13 +154,12 @@ export const myProjects = [
     id: 7,
     title: "Truth_N_Dare",
     description:
-      "A real-time collaboration suite with messaging, task boards, and team workflows.",
+      "A fun, web-based Truth or Dare game built with HTML, CSS, and JavaScript. It fetches random and hilarious prompts from a free API, offering a playful, interactive experience with smooth animations and a responsive UI.",
     subDescription: [
-      "Implemented real-time chat using Socket.IO.",
-      "Built kanban-based task management system.",
-      "Enabled file sharing and multi-device support.",
-      "Designed an efficient workspace UI."
-    ],
+  "Built using HTML, CSS, and JavaScript with a smooth animated interface.",
+  "Integrated the TruthOrDareBot API to fetch random truth or dare prompts.",
+  "Designed a playful UI where users enter their name and start instantly."
+],
     href: "https://github.com/ANU-2524/Truth_N_Dare",
     logo: "",
     image: "/assets/projects/truthNdare.png",
@@ -147,25 +169,24 @@ export const myProjects = [
       { id: 3, name: "Real-time", path: "/assets/logos/read.svg" }
     ]
   } , 
+
+];
+
+
+export const mySocials = [
   {
-    id: 8,
-    title: "AI Worlflow Assistant",
-    description:
-      "A real-time collaboration suite with messaging, task boards, and team workflows.",
-    subDescription: [
-      "Implemented real-time chat using Socket.IO.",
-      "Built kanban-based task management system.",
-      "Enabled file sharing and multi-device support.",
-      "Designed an efficient workspace UI."
-    ],
-    href: "https://github.com/ANU-2524/ai-workflow-assistant",
-    logo: "",
-    image: "/assets/projects/AI-Workflow-assistant-FLOWCHART.jpg",
-    tags: [
-      { id: 1, name: "Kafka", path: "/assets/logos/kafka.svg" },
-      { id: 2, name: "Socket.IO", path: "/assets/logos/socket.svg" },
-      { id: 3, name: "Real-time", path: "/assets/logos/read.svg" } , 
-      { id: 4, name: "Docker", path: "/assets/logos/docker.svg" } , 
-    ]
-  }
+    name: "Leetcode",
+    href: "https://leetcode.com/u/anu2524soni/",
+    icon: "/assets/socials/leetcode.png",
+  },
+  {
+    name: "Linkedin",
+    href: "https://www.linkedin.com/in/anu--soni/",
+    icon: "/assets/socials/linkedIn.svg",
+  },
+  {
+    name: "Github",
+    href: "https://github.com/ANU-2524",
+    icon: "/assets/socials/GitHub.svg",
+  },
 ];

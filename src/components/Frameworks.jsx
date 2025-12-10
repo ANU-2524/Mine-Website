@@ -11,8 +11,7 @@ export function Frameworks() {
     "React",
     "Vercel",
     "JavaScript",
-    "React",
-    "TailwindCss",
+    "TailwindCSS", 
     "CSS3"
   ];
   return (
