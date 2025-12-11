@@ -14,11 +14,18 @@ const HeroText = () => {
         </div>
       </div>
       <div className='flex- flex-col space-y-6 md:hidden'>
-        <p className='text-4xl font-medium'>Hy , I'm Anu !</p>
-        <div>
+        <p className='text-4xl font-medium'>Hello,  I’m Anu ...</p>
+        
+        {/* <div>
             <p className='text-5xl font-black text-neutral-300'>Building</p>
             <div>flipword</div>
             <p>Web Applications</p>
+        </div> */}
+        <div className='flex flex-col items-start'>
+            <p className='text-2xl font-medium text-neutral-300'
+            >A Developer <br/> Dedicated to Crafting</p>
+            <div><FlipWords words={["Secure" , "Modern" , "Scalable"]} className='font-black text-white text-4xl'/></div>
+            <p className='text-3xl font-medium text-neutral-300'>Web Solutions</p>
         </div>
       </div>
     </div>
