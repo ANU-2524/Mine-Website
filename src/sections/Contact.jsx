@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
+import { supabase } from "../lib/supabase";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,12 +11,72 @@ const Contact = () => {
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState("success");
   const [alertMessage, setAlertMessage] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  useEffect(() => {
+    // Check if user is already verified (logged in via magic link)
+    const checkUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setIsVerified(true);
+        setFormData((prev) => ({ ...prev, email: user.email }));
+      }
+    };
+    checkUser();
+
+    // Listen for auth state changes (e.g. after clicking magic link)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setIsVerified(true);
+        setFormData((prev) => ({ ...prev, email: session.user.email }));
+      } else {
+        setIsVerified(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   const handleChange = (e) => {
+    if (e.target.name === "email") {
+      setEmailError("");
+    }
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleVerifyEmail = async () => {
+    if (!formData.email) {
+      setEmailError("Please enter your email first.");
+      return;
+    }
+
+    setIsVerifying(true);
+    const { error } = await supabase.auth.signInWithOtp({
+      email: formData.email,
+      options: {
+        emailRedirectTo: window.location.href, // Redirect back to current page
+      },
+    });
+
+    setIsVerifying(false);
+    if (error) {
+      console.error("Supabase verification error:", error);
+      if (error.status === 400 || error.message.includes("invalid")) {
+        setEmailError("This email address is invalid or not allowed.");
+        showAlertMessage("danger", "Invalid email address.");
+      } else {
+        showAlertMessage("danger", "Failed to send verification link.");
+      }
+    } else {
+      showAlertMessage("success", "Magic link sent! Check your inbox to verify.");
+    }
+  };
+
   const showAlertMessage = (type, message) => {
     setAlertType(type);
     setAlertMessage(message);
@@ -23,8 +85,15 @@ const Contact = () => {
       setShowAlert(false);
     }, 5000);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!isVerified) {
+      showAlertMessage("danger", "Please verify your email before sending.");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -57,8 +126,9 @@ const Contact = () => {
       showAlertMessage("danger", "Somthing went wrong!");
     }
   };
+
   return (
-    <section className="relative flex items-center c-space section-spacing">
+    <section id="contact" className="relative flex items-center c-space section-spacing">
       <Particles
         className="absolute inset-0 -z-50"
         quantity={100}
@@ -71,10 +141,9 @@ const Contact = () => {
         <div className="flex flex-col items-start w-full gap-5 mb-10">
           <h2 className="text-heading">Let's Talk</h2>
           <p className="font-normal text-neutral-400">
-            Whether you're loking to build a new website, improve your existing
-            platform, or bring a unique project to life, I'm here to COLLABORATE ! 
-            <br></br>
-            Let's connect !
+            {isVerified 
+              ? "Your email is verified! Now you can send your message."
+              : "To prevent spam, please verify your email with a magic link before sending a message."}
           </p>
         </div>
         <form className="w-full" onSubmit={handleSubmit}>
@@ -98,17 +167,36 @@ const Contact = () => {
             <label htmlFor="email" className="feild-label">
               Email
             </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              className="field-input field-input-focus"
-              placeholder="Your e.address to connect"
-              autoComplete="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
+            <div className="flex gap-2">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                className="field-input field-input-focus flex-1"
+                placeholder="Your e.address to connect"
+                autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
+                disabled={isVerified}
+                required
+              />
+              {!isVerified && (
+                <button
+                  type="button"
+                  onClick={handleVerifyEmail}
+                  disabled={isVerifying}
+                  className="px-4 py-2 text-sm font-semibold text-white bg-royal rounded-md hover:opacity-80 disabled:opacity-50"
+                >
+                  {isVerifying ? "Sending..." : "Verify"}
+                </button>
+              )}
+            </div>
+            {isVerified && (
+              <p className="mt-2 text-sm text-green-400">✓ Email Verified</p>
+            )}
+            {emailError && (
+              <p className="mt-2 text-sm text-red-400">{emailError}</p>
+            )}
           </div>
           <div className="mb-5">
             <label htmlFor="message" className="feild-label">
@@ -129,9 +217,12 @@ const Contact = () => {
           </div>
           <button
             type="submit"
-            className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation"
+            disabled={!isVerified || isLoading}
+            className={`w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation ${
+              (!isVerified || isLoading) ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            {!isLoading ? "Send" : "Sending..."}
+            {isLoading ? "Sending..." : "Send Message"}
           </button>
         </form>
       </div>

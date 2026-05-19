@@ -18,9 +18,9 @@ export const myProjects = [
       { id: 2, name: "Socket.IO", path: "/assets/logos/socket.svg" },
       { id: 3, name: "Real-time", path: "/assets/logos/read.svg" } , 
       { id: 4, name: "Docker", path: "/assets/logos/docker.svg" } , 
-      { id: 4, name: "Kafka", path: "/assets/logos/kafka.svg" } , 
-      { id: 4, name: "Django", path: "/assets/logos/Django.svg" } , 
-      { id: 5, name: "Web App", path: "/assets/logos/web.png" } ,
+      { id: 5, name: "Kafka", path: "/assets/logos/kafka.svg" } , 
+      { id: 6, name: "Django", path: "/assets/logos/Django.svg" } , 
+      { id: 7, name: "Web App", path: "/assets/logos/web.png" } ,
     ]
   } , 
   {
