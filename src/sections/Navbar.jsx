@@ -59,13 +59,13 @@ const Navbar = () => {
       </div>
       {isOpen && (
         <motion.div
-          className="block overflow-hidden text-center sm:hidden"
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          style={{ maxHeight: "100vh" }}
-          transition={{ duration: 1 }}
+          className="block overflow-hidden text-center sm:hidden bg-primary/95 backdrop-blur-lg border-b border-white/10"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
         >
-          <nav className="pb-5">
+          <nav className="py-5">
             <Navigation setIsOpen={setIsOpen} />
           </nav>
         </motion.div>

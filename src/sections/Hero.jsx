@@ -10,20 +10,24 @@ import { Suspense } from "react";
 import Loader from "../components/Loader";
 
 const Hero = () => {
-  const isMobile = useMediaQuery({ maxWidth: 853 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isSmallMobile = useMediaQuery({ maxWidth: 480 });
+
   return (
-    <section id="home" className="relative flex flex-col md:flex-row items-center justify-center min-h-screen overflow-hidden c-space pt-20 md:pt-0">
-      <HeroText />
+    <section id="home" className="relative flex flex-col items-center md:items-start justify-center min-h-screen overflow-hidden c-space pt-28 md:pt-0">
+      <div className="z-10 w-full md:pl-10 lg:pl-20">
+        <HeroText />
+      </div>
       <ParallaxBackground />
       <figure
-        className="relative md:absolute inset-0 w-full h-[50vh] md:h-full z-0"
+        className="absolute inset-0 w-full h-full z-0 pointer-events-none"
       >
         <Canvas camera={{ position: [0, 1, 3] }}>
           <Suspense fallback={<Loader />}>
             <Float>
               <Astronaut
-                scale={isMobile ? 0.15 : 0.23}
-                position={isMobile ? [0, -0.5, 0] : [0, -1, 0]}
+                scale={isSmallMobile ? 0.12 : isMobile ? 0.15 : 0.23}
+                position={isMobile ? [0, -0.6, 0] : [0.8, -0.8, 0]}
               />
             </Float>
             <Rig />
