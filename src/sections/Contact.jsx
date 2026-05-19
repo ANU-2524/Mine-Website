@@ -128,7 +128,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative flex items-center c-space section-spacing">
+    <section id="contact" className="relative flex items-center justify-center c-space section-spacing py-20">
       <Particles
         className="absolute inset-0 -z-50"
         quantity={100}
@@ -137,25 +137,25 @@ const Contact = () => {
         refresh
       />
       {showAlert && <Alert type={alertType} text={alertMessage} />}
-      <div className="flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white/10 rounded-2xl bg-primary">
+      <div className="flex flex-col items-center justify-center w-full max-w-lg p-6 sm:p-10 mx-auto border border-white/10 rounded-3xl bg-primary/80 backdrop-blur-sm shadow-2xl">
         <div className="flex flex-col items-start w-full gap-5 mb-10">
-          <h2 className="text-heading">Let's Talk</h2>
-          <p className="font-normal text-neutral-400">
+          <h2 className="text-3xl sm:text-4xl font-bold">Let's Talk</h2>
+          <p className="text-sm sm:text-base font-normal text-neutral-400">
             {isVerified 
               ? "Your email is verified! Now you can send your message."
               : "To prevent spam, please verify your email with a magic link before sending a message."}
           </p>
         </div>
         <form className="w-full" onSubmit={handleSubmit}>
-          <div className="mb-5">
-            <label htmlFor="name" className="feild-label">
+          <div className="mb-6">
+            <label htmlFor="name" className="field-label flex items-center gap-2">
               Full Name
             </label>
             <input
               id="name"
               name="name"
               type="text"
-              className="field-input field-input-focus"
+              className="field-input field-input-focus h-12"
               placeholder="Your good name..."
               autoComplete="name"
               value={formData.name}
@@ -163,16 +163,16 @@ const Contact = () => {
               required
             />
           </div>
-          <div className="mb-5">
-            <label htmlFor="email" className="feild-label">
+          <div className="mb-6">
+            <label htmlFor="email" className="field-label flex items-center gap-2">
               Email
             </label>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-3">
               <input
                 id="email"
                 name="email"
                 type="email"
-                className="field-input field-input-focus flex-1"
+                className="field-input field-input-focus flex-1 h-12"
                 placeholder="Your e.address to connect"
                 autoComplete="email"
                 value={formData.email}
@@ -185,30 +185,30 @@ const Contact = () => {
                   type="button"
                   onClick={handleVerifyEmail}
                   disabled={isVerifying}
-                  className="px-4 py-2 text-sm font-semibold text-white bg-royal rounded-md hover:opacity-80 disabled:opacity-50"
+                  className="px-6 py-3 text-sm font-semibold text-white bg-royal rounded-xl hover:bg-royal/80 active:scale-95 transition-all disabled:opacity-50 h-12 flex items-center justify-center min-w-[100px]"
                 >
                   {isVerifying ? "Sending..." : "Verify"}
                 </button>
               )}
             </div>
             {isVerified && (
-              <p className="mt-2 text-sm text-green-400">✓ Email Verified</p>
+              <p className="mt-2 text-xs sm:text-sm text-green-400 font-medium">✓ Email Verified</p>
             )}
             {emailError && (
-              <p className="mt-2 text-sm text-red-400">{emailError}</p>
+              <p className="mt-2 text-xs sm:text-sm text-red-100 bg-red-500/20 p-2 rounded-md border border-red-500/30">{emailError}</p>
             )}
           </div>
-          <div className="mb-5">
-            <label htmlFor="message" className="feild-label">
+          <div className="mb-8">
+            <label htmlFor="message" className="field-label flex items-center gap-2">
               Message
             </label>
             <textarea
               id="message"
               name="message"
               type="text"
-              rows="4"
-              className="field-input field-input-focus"
-              placeholder="What's in your mind , Share your thoughts..."
+              rows="5"
+              className="field-input field-input-focus resize-none py-3"
+              placeholder="What's in your mind? Share your thoughts..."
               autoComplete="message"
               value={formData.message}
               onChange={handleChange}
@@ -218,8 +218,8 @@ const Contact = () => {
           <button
             type="submit"
             disabled={!isVerified || isLoading}
-            className={`w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation ${
-              (!isVerified || isLoading) ? "opacity-50 cursor-not-allowed" : ""
+            className={`w-full px-1 py-4 text-lg font-bold text-center rounded-xl cursor-pointer bg-gradient-to-r from-lavender to-royal hover:opacity-90 active:scale-100 active:opacity-100 transition-all ${
+              (!isVerified || isLoading) ? "opacity-40 cursor-not-allowed filter grayscale" : "shadow-lg shadow-royal/20"
             }`}
           >
             {isLoading ? "Sending..." : "Send Message"}

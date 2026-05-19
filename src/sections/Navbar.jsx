@@ -33,12 +33,12 @@ function Navigation({ setIsOpen }) {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
+    <div className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-md border-b border-white/5 bg-primary/20">
       <div className="mx-auto c-space max-w-7xl">
-        <div className="flex items-center justify-between py-2 sm:py-0">
+        <div className="flex items-center justify-between py-4 sm:py-5">
           <a
             href="/"
-            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white"
+            className="text-xl sm:text-2xl font-bold transition-all text-neutral-400 hover:text-white"
           >
             Anu Soni...
           </a>

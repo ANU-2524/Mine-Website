@@ -2,22 +2,42 @@ import { mySocials } from "../constant";
 
 const Footer = () => {
   return (
-    <section className="flex flex-wrap items-center justify-between gap-5 pb-3 text-sm text-neutral-400 c-space">
-      <div className="mb-4 bg-gradient-to-r from-transparent via-neutral-700 to-transparent h-[1px] w-full" />
-      <div className="flex gap-2">
-        <p>Terms & Conditions</p>
-        <p>|</p>
-        <p>Privacy Policy</p>
+    <footer className="w-full py-10 border-t border-white/5 bg-primary/20 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-5 flex flex-col items-center gap-8">
+        <div className="flex flex-wrap justify-center gap-8 sm:gap-12">
+          {mySocials.map((social, index) => (
+            <a 
+              href={social.href} 
+              key={index} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="group flex flex-col items-center gap-2 transition-all"
+            >
+              <div className="p-3 rounded-full bg-white/5 group-hover:bg-white/10 group-hover:scale-110 transition-all border border-white/5 group-hover:border-white/20">
+                <img src={social.icon} className="w-6 h-6 opacity-60 group-hover:opacity-100" alt={social.name} />
+              </div>
+              <span className="text-[10px] uppercase tracking-widest text-neutral-500 group-hover:text-neutral-300 font-medium">{social.name}</span>
+            </a>
+          ))}
+        </div>
+        
+        <div className="w-full max-w-xs h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-4 text-xs font-medium tracking-wide text-neutral-500 uppercase">
+          <div className="flex gap-4">
+            <span className="hover:text-neutral-300 cursor-pointer transition-colors">Terms</span>
+            <span className="hover:text-neutral-300 cursor-pointer transition-colors">Privacy</span>
+          </div>
+          
+          <p className="order-first sm:order-none text-neutral-400">© 2025 Anu Soni. All rights reserved.</p>
+          
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            Available for hire
+          </div>
+        </div>
       </div>
-      <div className="flex gap-3 white-500">
-        {mySocials.map((social, index) => (
-          <a href={social.href} key={index}>
-            <img src={social.icon} className="w-5 h-5" alt={social.name} />
-          </a>
-        ))}
-      </div>
-      <p>© 2025.</p>
-    </section>
+    </footer>
   );
 };
 
