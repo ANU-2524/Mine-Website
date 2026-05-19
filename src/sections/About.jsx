@@ -32,7 +32,7 @@ const About = () => {
             ref={grid2Container}
             className="flex items-center justify-center w-full h-full relative"
           >
-            <p className="flex items-end text-3xl md:text-5xl text-gray-500 opacity-20 md:opacity-100">
+            <p className="flex items-end text-3xl md:text-5xl text-gray-400 opacity-30">
               CODE IS CRAFT
             </p>
             {/* Cards - hiding on very small screens or adjusting if needed, but for now keeping with better sizing */}
@@ -46,7 +46,31 @@ const About = () => {
               text="GRASP"
               containerRef={grid2Container}
             />
-            {/* ... keeping other cards but adding relative positioning context ... */}
+            <Card
+              style={{ rotate: "10deg", top: "10%", right: "10%" }}
+              image="assets/logos/Python.svg"
+              containerRef={grid2Container}
+            />
+            <Card
+              style={{ rotate: "-15deg", bottom: "10%", left: "20%" }}
+              image="assets/logos/React.svg"
+              containerRef={grid2Container}
+            />
+            <Card
+              style={{ rotate: "25deg", bottom: "15%", right: "15%" }}
+              text="CREATE"
+              containerRef={grid2Container}
+            />
+            <Card
+              style={{ rotate: "-10deg", top: "50%", right: "5%" }}
+              image="assets/logos/Next.js.svg"
+              containerRef={grid2Container}
+            />
+            <Card
+              style={{ rotate: "15deg", top: "5%", left: "40%" }}
+              image="assets/logos/TailwindCSS.svg"
+              containerRef={grid2Container}
+            />
           </div>
         </div>
         {/* Grid 3 */}
@@ -73,7 +97,7 @@ const About = () => {
         {/* Grid 5 */}
         <div className="grid-default-color grid-5 min-h-[22rem] md:min-h-0">
           <div className="z-10 w-full md:w-[50%]">
-            <p className="headtext">Teck Stack</p>
+            <p className="headtext">Tech Stack</p>
             <p className="subtext text-xs sm:text-sm">
               I specialize in a variety of languages, frameworks, and tools that
               allow me to build robust and scalable applications.

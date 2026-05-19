@@ -30,11 +30,6 @@ const Footer = () => {
           </div>
           
           <p className="order-first sm:order-none text-neutral-400">© 2025 Anu Soni. All rights reserved.</p>
-          
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            Available for hire
-          </div>
         </div>
       </div>
     </footer>

@@ -65,7 +65,12 @@ const Contact = () => {
 
     setIsVerifying(false);
     if (error) {
-      console.error("Supabase verification error:", error);
+      console.error("Supabase verification error details:", {
+        message: error.message,
+        status: error.status,
+        name: error.name,
+        code: error.code
+      });
       if (error.status === 400 || error.message.includes("invalid")) {
         setEmailError("This email address is invalid or not allowed.");
         showAlertMessage("danger", "Invalid email address.");
