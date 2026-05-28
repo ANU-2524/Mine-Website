@@ -23,12 +23,7 @@ const Footer = () => {
         
         <div className="w-full max-w-xs h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-4 text-xs font-medium tracking-wide text-neutral-500 uppercase">
-          <div className="flex gap-4">
-            <span className="hover:text-neutral-300 cursor-pointer transition-colors">Terms</span>
-            <span className="hover:text-neutral-300 cursor-pointer transition-colors">Privacy</span>
-          </div>
-          
+        <div className="flex flex-col sm:flex-row items-center justify-center w-full gap-4 text-xs font-medium tracking-wide text-neutral-500 uppercase">
           <p className="order-first sm:order-none text-neutral-400">© 2025 Anu Soni. All rights reserved.</p>
         </div>
       </div>
